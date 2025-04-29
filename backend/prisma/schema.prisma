@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  favoriteList FavoriteList?
+
+  @@map("users")
+}
+
+model FavoriteList {
+  id          String            @id @default(uuid())
+  title       String
+  description String
+  userId      String            @unique @map("user_id")
+  user        User              @relation(fields: [userId], references: [id])
+  favorites   FavoriteProduct[]
+
+  @@map("favorite_list")
+}
+
+model FavoriteProduct {
+  id             String   @id @default(uuid())
+  productId      String   @map("product_id")
+  favoriteListId String   @map("favorite_list_id")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  favoriteList FavoriteList @relation(fields: [favoriteListId], references: [id])
+
+  @@map("favorite_product")
+}
