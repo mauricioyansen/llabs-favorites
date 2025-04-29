@@ -1,7 +1,7 @@
 
 # 📦 LLabs Favorites
 
-Este projeto fullstack tem como objetivo gerenciar **produtos favoritos de clientes**, fornecendo uma API robusta e uma interface simples para interação. O sistema foi construído com foco em alta performance, suportando uma carga de até **100.000 produtos favoritados por minuto**.
+Este projeto fullstack tem como objetivo gerenciar **produtos favoritos de clientes**, fornecendo uma API robusta e uma interface simples para interação. O sistema foi construído com foco em alta performance, suportando uma grande carga de **produtos favoritados por minuto**.
 
 ---
 
@@ -19,14 +19,14 @@ Este projeto fullstack tem como objetivo gerenciar **produtos favoritos de clien
 - Exclusão da lista desfavorita todos os produtos associados.
 
 ### 🛍️ Catálogo e Favoritar Produtos
-- Exibição de catálogo de produtos (consumido da [Fake Store API](https://fakestoreapi.com/)).
+- Exibição de catálogo de produtos (consumido da [Fake Store API](https://fakestoreapi.com/docs)).
 - Produtos apresentados com **título, imagem e preço**.
 - Regras de negócio:
   - Não é possível favoritar produtos inexistentes ou duplicados.
   - Apenas até 5 favoritos permitidos por cliente.
 
 ### 📢 Notificações (mockadas)
-- Para cada produto favoritado, o cliente recebe uma notificação (e-mail, SMS ou WhatsApp).
+- Para cada produto favoritado, o cliente recebe uma notificação.
 - Integração com serviço de e-mail fake via Mailtrap (mock ou opcionalmente real).
 
 ---
