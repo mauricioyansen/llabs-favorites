@@ -29,6 +29,22 @@ Este projeto fullstack tem como objetivo gerenciar **produtos favoritos de clien
 - Para cada produto favoritado, o cliente recebe uma notificação.
 - Integração com serviço de e-mail fake via Mailtrap (mock ou opcionalmente real).
 
+### 📨 Sistema de Mensageria com BullMQ
+
+Para garantir **escalabilidade e performance** no processo de favoritar produtos — especialmente com a alta volumetria de até 100.000 requisições por minuto — o backend utiliza o **BullMQ**, uma biblioteca robusta para gerenciamento de filas baseada em Redis.
+
+## 📌 Funcionamento
+
+- Ao favoritar um produto, a operação de envio de notificação é **desacoplada da requisição principal** e enfileirada.
+- A fila é processada por workers que são responsáveis por simular (ou enviar, se configurado) a notificação via e-mail.
+- Isso permite uma experiência mais fluida para o cliente e evita sobrecarga no servidor HTTP.
+
+## 📦 Tecnologias relacionadas
+
+- **BullMQ** – biblioteca de filas baseada em Redis.
+- **Redis** – utilizado como broker de mensageria para armazenar e distribuir os jobs.
+- **Mailtrap** (mock) – usado como serviço de email para ambiente de desenvolvimento.
+
 ---
 
 ## 📁 Estrutura do Projeto
@@ -148,6 +164,47 @@ npm run dev
 
 ---
 
+## 🧪 Coleção de Testes no Postman
+
+Para facilitar o teste das rotas da aplicação, há uma coleção do **Postman** disponível na raiz do projeto com o nome `Llabs Favorites`.
+
+Essa coleção contém exemplos de requisições organizadas por categorias, incluindo autenticação, criação de listas de favoritos e favoritar produtos.
+
+### 📂 Estrutura da coleção:
+
+- **Accounts**
+  - Create User
+
+- **Sessions**
+  - Login User 1 (com extração automática do `accessToken`)
+  - Login User 2 (com extração automática do `accessToken`)
+
+- **Favorite List**
+  - Create Fav List
+  - Show Fav List
+  - Edit Fav List
+  - Del Fav List
+
+- **Favorite Products**
+  - Get All Product
+  - Favorite a Product
+  - Get Fav Products By FavListId
+  - Del Product By Id
+
+### 🛠️ Como usar
+
+1. Abra o **Postman**.
+2. Clique em **Import** e selecione o arquivo `.json` localizado na raiz do projeto.
+3. Altere a variável `{{url}}` para o endereço local da sua API (por exemplo, `http://localhost:3333`).
+4. Faça login com um dos usuários de teste e copie o `accessToken`, que será salvo automaticamente no ambiente.
+5. Use as demais requisições conforme necessário para testar a aplicação.
+
+---
+
+Essa coleção é útil tanto para testes manuais quanto para explorar rapidamente as funcionalidades expostas pela API.
+
+---
+
 ## 🧪 Tecnologias Utilizadas
 
 ### Backend
@@ -157,12 +214,17 @@ npm run dev
 - **PostgreSQL**
 - **JWT** (autenticação)
 - **Docker** / Docker Compose
+- **BullMQ** – biblioteca de filas baseada em Redis.
+- **Redis** – utilizado como broker de mensageria para armazenar e distribuir os jobs.
+- **Mailtrap** (mock) – usado como serviço de email para ambiente de desenvolvimento.
+- **Vitest** - Para os teste e2e.
 
 ### Frontend
 
 - **React 19**
 - **Vite**
 - **Tailwind CSS**
+- **Shadcn UI**
 
 ---
 
