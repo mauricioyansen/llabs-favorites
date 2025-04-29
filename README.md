@@ -20,16 +20,14 @@ Este projeto fullstack tem como objetivo gerenciar **produtos favoritos de clien
 - Exclusão da lista desfavorita todos os produtos associados.
 
 ### 🛍️ Catálogo e Favoritar Produtos
-
-- Exibição de catálogo de produtos (consumido da [Fake Store API](https://fakestoreapi.com/docs)).
+- Exibição de catálogo de produtos (consumido da [Fake Store API](https://fakestoreapi.com/)).
 - Produtos apresentados com **título, imagem e preço**.
 - Regras de negócio:
   - Não é possível favoritar produtos inexistentes ou duplicados.
   - Apenas até 5 favoritos permitidos por cliente.
 
 ### 📢 Notificações (mockadas)
-
-- Para cada produto favoritado, o cliente recebe uma notificação.
+- Para cada produto favoritado, o cliente recebe uma notificação (e-mail, SMS ou WhatsApp).
 - Integração com serviço de e-mail fake via Mailtrap (mock ou opcionalmente real).
 
 ### 📨 Sistema de Mensageria com BullMQ
@@ -166,50 +164,6 @@ VITE_API_URL=http://localhost:3000
 ```bash
 npm run dev
 ```
-
----
-
-## 🧪 Coleção de Testes no Postman
-
-Para facilitar o teste das rotas da aplicação, há uma coleção do **Postman** disponível na raiz do projeto com o nome `Llabs Favorites`.
-
-Essa coleção contém exemplos de requisições organizadas por categorias, incluindo autenticação, criação de listas de favoritos e favoritar produtos.
-
-### 📂 Estrutura da coleção:
-
-- **Accounts**
-
-  - Create User
-
-- **Sessions**
-
-  - Login User 1 (com extração automática do `accessToken`)
-  - Login User 2 (com extração automática do `accessToken`)
-
-- **Favorite List**
-
-  - Create Fav List
-  - Show Fav List
-  - Edit Fav List
-  - Del Fav List
-
-- **Favorite Products**
-  - Get All Product
-  - Favorite a Product
-  - Get Fav Products By FavListId
-  - Del Product By Id
-
-### 🛠️ Como usar
-
-1. Abra o **Postman**.
-2. Clique em **Import** e selecione o arquivo `.json` localizado na raiz do projeto.
-3. Altere a variável `{{url}}` para o endereço local da sua API (por exemplo, `http://localhost:3333`).
-4. Faça login com um dos usuários de teste e copie o `accessToken`, que será salvo automaticamente no ambiente.
-5. Use as demais requisições conforme necessário para testar a aplicação.
-
----
-
-Essa coleção é útil tanto para testes manuais quanto para explorar rapidamente as funcionalidades expostas pela API.
 
 ---
 
