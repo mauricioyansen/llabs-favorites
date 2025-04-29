@@ -95,26 +95,26 @@ MAILTRAP_PASSWORD=xxxxxx
 FAKE_API_PRODUCTS_URL=https://fakestoreapi.com/products
 ```
 
-4. Inicialize o banco de dados com Prisma:
+4. Suba o projeto com Docker Compose:
+
+```bash
+docker-compose up -d
+```
+
+5. Inicialize o banco de dados com Prisma:
 
 ```bash
 npx prisma migrate dev
 npx prisma generate
 ```
 
-5. (Opcional) Acesse o painel de dados:
+6. (Opcional) Acesse o painel de dados:
 
 ```bash
 npx prisma studio
 ```
 
-6. Suba o projeto com Docker Compose:
-
-```bash
-docker-compose up
-```
-
-Ou rode em modo desenvolvimento localmente:
+Rode em modo desenvolvimento localmente:
 
 ```bash
 npm run start:dev
